@@ -16,7 +16,7 @@ alpha = 3; % strength of effect, fitted to spike magnitude with one param
 alphas = 0;
 
 S(1) = 1;%*(1+dip_mag*5);
-I(1) = 1*10^(-2);%max(1*10^(-3)*(1+randn*0.5*0),0); % random 1% inoculum
+I(1) = 1*10^(-5);%max(1*10^(-3)*(1+randn*0.5*0),0); % random 1% inoculum
 
 totalI(1) = I(1);
 R(1) = 0;
