@@ -121,7 +121,10 @@ for deaths. Then run
 ```sh
 covid19final
 ```
-All analysis results should appear. Note that there are two auxillary scripts related to the analysis:
+All analysis results should appear. 
+<p>
+</p>
+Note that there are two auxillary scripts related to the analysis:
 
 
 * moving_average
