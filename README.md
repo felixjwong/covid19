@@ -146,11 +146,11 @@ fit_covid_magnitudes
 
 ### Modeling
 
-The model develops a modified SIR/SEIR model for modeling the effects of decreased mobility on the transmission dynamics of COVID-19. The model is simulated by a script, SIR.m. To run it, simply execute
+We developed a modified SIR/SEIR model for modeling the effects of decreased mobility on the transmission dynamics of COVID-19. The model is simulated by a script, SIR.m. To run it, simply execute
 ```sh
 SIR
 ```
-in MATLAB. You may change the model parameters directly in the script. To simulate the SEIR model, change the SEIR flag to <b>True</b> before running the script: 
+in MATLAB. You may change the model parameters, including <i>&alpha;</i> and <i>&alpha;</i>\*, directly in the script. To simulate the SEIR model, change the SEIR flag to <b>True</b> before running the script: 
 ```sh
 SEIR = 1
 ```
