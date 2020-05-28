@@ -121,7 +121,23 @@ for deaths. Then run
 ```sh
 covid19final
 ```
-All analysis results should appear. 
+All analysis results should appear. Note that there are two auxillary scripts related to the analysis:
+
+
+* moving_average
+<p>
+Auxillary script for calculating the moving average of a timeseries. This script is run by covid19final.m.
+</p>
+
+
+* fit_covid_magnitudes
+<p>
+Auxillary script for calculating the best fit lines (fig. S11) and orthogonal distances (fig. S15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is &lambda;. This script can be run after all analysis appears by simply executing
+```sh
+fit_covid_magnitudes
+```
+</p>
+
 
 
 ### Modeling
