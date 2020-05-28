@@ -122,10 +122,10 @@ for deaths. Then run
 covid19final
 ```
 All analysis results should appear. 
-<p>
-</p>
-Note that there are two auxillary scripts related to the analysis. They are described as follows:
+<p></p>
 
+Note that there are two auxillary scripts related to the analysis. They are described as follows:
+<p></p>
 
 * moving_average
 <p>
@@ -135,7 +135,7 @@ Auxillary script for calculating the moving average of a timeseries. This script
 
 * fit_covid_magnitudes
 <p>
-Auxillary script for calculating the best fit lines (fig. S11) and orthogonal distances (fig. S15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is &lambda;. This script can be run after all analysis appears by simply executing
+Auxillary script for calculating the best fit lines (fig. S11) and orthogonal distances (fig. S15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is <i>&lambda;</i>. This script can be run after the analysis by simply executing
 </p>
 
 ```sh
@@ -146,7 +146,7 @@ fit_covid_magnitudes
 
 ### Modeling
 
-The model develops a modified SIR/SEIR model for modeling the effects of decreased mobility on the transmission dynamics of COVID-19. The model is run by a script, SIR.m. To run it, simply execute
+The model develops a modified SIR/SEIR model for modeling the effects of decreased mobility on the transmission dynamics of COVID-19. The model is simulated by a script, SIR.m. To run it, simply execute
 ```sh
 SIR
 ```
