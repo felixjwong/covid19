@@ -59,12 +59,12 @@ Same as countries_cases_0514, but for 3195 U.S. counties.
 
 * x_deaths_0514
 <p>
-Same as x_cases_0514, but for death timeseries.
+Same as x_cases_0514, but for death timeseries ('x' can be 'countries' or 'UScounties').
 </p>
 
 * x_mobility_0514
 <p>
-Google mobility data for countries or U.S. counties. The cell variable this script defines, MO, is indexed from 1,..., 216 in the case of countries and 1,..., 3195 in the case of U.S. counties, corresponding to each row of the relevant timeseries. Each entry represents the change, in percent, of activity with respect to a baseline value earlier in the year. Locales with no data are not specified (so that MO{i} is not set, where i is the locale).
+Google mobility data for countries or U.S. counties ('x' can be 'countries' or 'UScounties'). The cell variable this script defines, MO, is indexed from 1,..., 216 in the case of countries and 1,..., 3195 in the case of U.S. counties, corresponding to each row of the relevant timeseries. Each entry is a matrix which represents the change, in percent, of activity with respect to a baseline value earlier in the year. The matrix contains six columns corresponding in order to each mobility category (retail and recreation, grocery and pharmacy, parks, transit stations, workplaces, and residential). Locales with no data are not specified, so that, in these cases, MO{i} is not set, where i is the locale.
 </p>
 
 * apple_mobility_0514
@@ -73,7 +73,7 @@ Same as the Google mobility data, but for Apple mobility, and for countries only
 </p>
 
 <p>
-We remind the reader to refer to Data S1 and S2 of the paper for the mapping between locales in the rows and their names. 
+<b>Please note:</b> We remind the reader to refer to Data S1 and S2 of the paper for the mapping between locales in the rows and their names. 
 </p>
 
 ### Prerequisites
