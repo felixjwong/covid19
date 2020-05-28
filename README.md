@@ -124,7 +124,7 @@ covid19final
 All analysis results should appear. 
 <p>
 </p>
-Note that there are two auxillary scripts related to the analysis:
+Note that there are two auxillary scripts related to the analysis. They are described as follows:
 
 
 * moving_average
@@ -137,6 +137,7 @@ Auxillary script for calculating the moving average of a timeseries. This script
 <p>
 Auxillary script for calculating the best fit lines (fig. S11) and orthogonal distances (fig. S15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is &lambda;. This script can be run after all analysis appears by simply executing
 </p>
+
 ```sh
 fit_covid_magnitudes
 ```
@@ -145,12 +146,15 @@ fit_covid_magnitudes
 
 ### Modeling
 
-The model develops a modified SIR model for modeling the effects of decreased mobility on the transmission dynamics of COVID-19. The model is run by a script, SIR.m. To run it, simply execute
+The model develops a modified SIR/SEIR model for modeling the effects of decreased mobility on the transmission dynamics of COVID-19. The model is run by a script, SIR.m. To run it, simply execute
 ```sh
 SIR
 ```
-in MATLAB. You may change the model parameters directly in the script. A modified SEIR model can be built, and has been implemented, with minimal changes to SIR.m.
-
+in MATLAB. You may change the model parameters directly in the script. To simulate the SEIR model, change the SEIR flag to <b>True</b> before running the script: 
+```sh
+SEIR = 1
+```
+As for the SIR model, the SEIR model parameters can be changed directly in the script.
 
 <!-- CONTACT -->
 ## Contact

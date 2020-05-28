@@ -1,22 +1,24 @@
 clear all;
-
 stats = [];
-%figure; hold on;
 
 j = 1;
+SEIR = 0; % set to 1 for SEIR model
 
 while j <= 300
 
+%% Parameters
 beta = max(0.4*(1+randn*0.3),0); % units 1/time, set by spike date
 gamma = beta/3; % R0, units 1/time, set by reproduction number
-
 dip_mag = -max(randn*.2+0.5,0)/10; % literally is dip mag
-
 alpha = 3; % strength of effect, fitted to spike magnitude with one param
 alphas = 0;
+if SEIR
+    delta = 1/4; 
+    E(1) = 0;
+end
 
-S(1) = 1;%*(1+dip_mag*5);
-I(1) = 1*10^(-5);%max(1*10^(-3)*(1+randn*0.5*0),0); % random 1% inoculum
+I(1) = 1*10^(-5);
+S(1) = 1-I(1);
 
 totalI(1) = I(1);
 R(1) = 0;
@@ -25,12 +27,12 @@ tend = 10000;
 
 new_beta = beta*(1+dip_mag*alpha); 
 rand_time = rand;
-tsd = max((10*(1+10*dip_mag))/dt,0); % set by dip date % *(randn+1)+1*randn
+tsd = max((10*(1+10*dip_mag))/dt,0); 
 new_S = max(1+dip_mag*alphas,0);
 
 for t=2:tend
     
-S(t) = max(S(t-1) - (beta*I(t-1)*S(t-1))*dt ,0);
+    S(t) = max(S(t-1) - (beta*I(t-1)*S(t-1))*dt ,0);
 
     if (t - tsd < 1) && (t - tsd > 0) % time window
         S(t) = S(t)*new_S;
@@ -40,65 +42,58 @@ S(t) = max(S(t-1) - (beta*I(t-1)*S(t-1))*dt ,0);
         beta = new_beta;
     end
 
-
-
-I(t) = I(t-1) + (beta*I(t-1)*S(t-1)-gamma*I(t-1))*dt;
-totalI(t) = totalI(t-1) + (beta*I(t-1)*S(t-1))*dt;
-R(t) = 1 - I(t) - S(t); 
+    
+    if SEIR
+        E(t) = E(t-1) + beta*I(t-1)*S(t-1)*dt - delta*E(t-1)*dt;
+        I(t) = I(t-1) + delta*E(t-1)*dt -gamma*I(t-1)*dt;
+        totalI(t) = totalI(t-1) + delta*E(t-1)*dt;
+        R(t) = 1 - I(t) - S(t) - E(t); 
+    else
+        I(t) = I(t-1) + (beta*I(t-1)*S(t-1)-gamma*I(t-1))*dt;
+        totalI(t) = totalI(t-1) + (beta*I(t-1)*S(t-1))*dt;
+        R(t) = 1 - I(t) - S(t); 
+    end
 end
 
 
-
-%plot(totalI)
 [s idx] = max(diff(totalI,1)/dt);
 [hds hdidx] = min(abs(totalI-0.6));
 
-%if (idx*dt < 30) || (idx*dt > 60)
-%    continue;
-%end
-
 stats(j,:) = [idx*dt s/max(totalI) hdidx*dt];
-%title(['spike mag = ',num2str(s),', spike date = ',num2str(idx)])
 vars(j,:) = [tsd*dt dip_mag];
 totalIs(j) = totalI(end);
-
 timepoints(j,:) = [totalI(300) totalI(400) totalI(600)];
 j = j + 1;
-
-
 end
 
 
 figure;
 
 axx = 1;
-%for k = 1:10
-    subplot(1,5,1); hold on; scatter(vars(:,1)+40,stats(:,1)+40,'MarkerFaceColor','r','MarkerEdgeColor','r',...
-    'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2); xlabel('Dip date'); ylabel('Spike date'); box on;
+subplot(1,5,1); hold on; scatter(vars(:,1)+40,stats(:,1)+40,'MarkerFaceColor','r','MarkerEdgeColor','r',...
+'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2); xlabel('Dip date'); ylabel('Spike date'); box on;
 if axx 
 ylim([80 110])
 end
-    subplot(1,5,3); hold on; scatter(vars(:,1)+40,stats(:,2),'MarkerFaceColor','r','MarkerEdgeColor','r',...
-    'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2);  xlabel('Dip date'); ylabel('Spike magnitude'); box on;
+subplot(1,5,3); hold on; scatter(vars(:,1)+40,stats(:,2),'MarkerFaceColor','r','MarkerEdgeColor','r',...
+'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2);  xlabel('Dip date'); ylabel('Spike magnitude'); box on;
 if axx 
 ylim([0.02 0.08])
 end
-%end
-
-    subplot(1,5,2); hold on; scatter(vars(:,2),stats(:,1)+40,'MarkerFaceColor','r','MarkerEdgeColor','r',...
-    'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2);  xlabel('Dip magnitude'); ylabel('Spike date'); box on;
+subplot(1,5,2); hold on; scatter(vars(:,2),stats(:,1)+40,'MarkerFaceColor','r','MarkerEdgeColor','r',...
+'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2);  xlabel('Dip magnitude'); ylabel('Spike date'); box on;
 if axx 
 xlim([-0.1 -0.0])
 ylim([80 110])
 end
-    subplot(1,5,4); hold on; scatter(vars(:,2),stats(:,2),'MarkerFaceColor','r','MarkerEdgeColor','r',...
-    'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2);  xlabel('Dip magnitude'); ylabel('Spike magnitude'); box on;
+subplot(1,5,4); hold on; scatter(vars(:,2),stats(:,2),'MarkerFaceColor','r','MarkerEdgeColor','r',...
+'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2);  xlabel('Dip magnitude'); ylabel('Spike magnitude'); box on;
 if axx 
 ylim([0.02 0.08])
 xlim([-0.1 -0.0])
 end
-    subplot(1,5,5); hold on; scatter(vars(:,1)+10,vars(:,2),'MarkerFaceColor','r','MarkerEdgeColor','r',...
-    'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2); xlabel('Dip date'); ylabel('Dip magnitude'); box on;
+subplot(1,5,5); hold on; scatter(vars(:,1)+10,vars(:,2),'MarkerFaceColor','r','MarkerEdgeColor','r',...
+'MarkerFaceAlpha',.2,'MarkerEdgeAlpha',.2); xlabel('Dip date'); ylabel('Dip magnitude'); box on;
 
 As = zeros(6,1);bs = zeros(6,1);Rs = zeros(6,1);
 
