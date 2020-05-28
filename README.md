@@ -133,10 +133,10 @@ Auxillary script for calculating the moving average of a timeseries. This script
 * fit_covid_magnitudes
 <p>
 Auxillary script for calculating the best fit lines (fig. S11) and orthogonal distances (fig. S15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is &lambda;. This script can be run after all analysis appears by simply executing
+</p>
 ```sh
 fit_covid_magnitudes
 ```
-</p>
 
 
 
