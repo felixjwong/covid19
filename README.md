@@ -73,7 +73,7 @@ Same as the Google mobility data, but for Apple mobility, and for countries only
 </p>
 
 <p>
-<b>Please note:</b> We remind the reader to refer to Data S1 and S2 of the paper for the mapping between locales in the rows and their names. 
+<b>Please note:</b> We remind the reader to refer to data S1 of the paper for the mapping between locales in the rows and their names. 
 </p>
 
 ### Prerequisites
@@ -144,7 +144,7 @@ fit_covid_magnitudes
 
 * unnormalized_analysis
 <p>
-Auxillary script for running an unnormalized analysis based on the incidence per person (IPP), as detailed in the <i>Materials and Methods</i> and shown as figs. S16 and S17. The script contains the population of each locale (when available), calculates the IPP, and runs the downsteam analyses. Depending on whether you are working with countries and provinces or U.S. counties, set the <b>is_counties</b> flag to 0 or 1. Then, run the script after the analysis by simply executing
+Auxillary script for running an unnormalized analysis based on the incidence per person (IPP), as detailed in the <i>Materials and Methods</i> and shown as figs. S16 and S17. The script contains the population of each locale (when available), calculates the IPP, and runs the downsteam analyses. Depending on whether you are working with countries and provinces or U.S. counties, set the <b>is_counties</b> flag to <b>0</b> or <b>1</b>. Then, run the script after the analysis by simply executing
 </p>
 
 ```sh
@@ -159,7 +159,7 @@ We developed a modified SIR/SEIR model for modeling the effects of decreased mob
 ```sh
 SIR
 ```
-in MATLAB. You may change the model parameters, including <i>&alpha;</i> and <i>&alpha;</i>\*, directly in the script. To simulate the SEIR model, change the SEIR flag to <b>True</b> before running the script: 
+in MATLAB. You may change the model parameters, including <i>&alpha;</i> and <i>&alpha;</i>\*, directly in the script. To simulate the SEIR model, change the SEIR flag to <b>1</b> before running the script: 
 ```sh
 SEIR = 1
 ```
