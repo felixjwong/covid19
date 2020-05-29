@@ -124,7 +124,7 @@ covid19final
 All analysis results should appear. 
 <p></p>
 
-Note that there are two auxillary scripts related to the analysis. They are described as follows:
+Note that there are three auxillary scripts related to the analysis. They are described as follows:
 <p></p>
 
 * moving_average
@@ -140,6 +140,15 @@ Auxillary script for calculating the best fit lines (fig. S11) and orthogonal di
 
 ```sh
 fit_covid_magnitudes
+```
+
+* unnormalized_analysis
+<p>
+Auxillary script for running an unnormalized analysis based on the incidence per person (IPP), as detailed in the <i>Materials and Methods</i> and shown as figs. S16 and S17. The script contains the population of each locale (when available), calculates the IPP, and runs the downsteam analyses. Depending on whether you are working with countries and provinces or U.S. counties, set the <b>is_counties</b> flag to 0 or 1. Then, run the script after the analysis by simply executing
+</p>
+
+```sh
+unnormalized_analysis
 ```
 
 
