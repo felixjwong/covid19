@@ -49,7 +49,7 @@ To run the data analysis, you will need to load the COVID-19 incidence data and 
 
 * countries_cases_0514
 <p>
-This file loads all timeseries for cases into two variables, dat and dates. dat is a 216x114 matrix where each row is a <b>country</b>, in sequence from Data S1 of the paper (Afganistan, Albania,..., Zambia). dates is a 216x1 matrix representing the number of days since January 22, 2020 that social distancing policies were implemented. 
+This file loads all timeseries for cases into two variables, dat and dates. dat is a 216x114 matrix where each row is a <b>country</b>, in sequence from Supplementary Dataset 1 of the paper (Afganistan, Albania,..., Zambia). dates is a 216x1 matrix representing the number of days since January 22, 2020 that social distancing policies were implemented. 
 </p>
 
 * UScounties_cases_0514
@@ -73,7 +73,7 @@ Same as the Google mobility data, but for Apple mobility, and for countries only
 </p>
 
 <p>
-<b>Please note:</b> We remind the reader to refer to data S1 of the paper for the mapping between locales in the rows and their names. 
+<b>Please note:</b> We remind the reader to refer to Supplementary Dataset 1 of the paper for the mapping between locales in the rows and their names. 
 </p>
 
 ### Prerequisites
@@ -135,7 +135,7 @@ Auxillary script for calculating the moving average of a timeseries. This script
 
 * fit_covid_magnitudes
 <p>
-Auxillary script for calculating the best fit lines (fig. S11) and orthogonal distances (fig. S15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is <i>&lambda;</i>. This script can be run after the analysis by simply executing
+Auxillary script for calculating the best fit lines (Supplementary Fig. 11) and orthogonal distances (Supplementary Fig. 15) of a dip magnitude-spike magnitude plot. The slope of the best fit line is <i>&lambda;</i>. This script can be run after the analysis by simply executing
 </p>
 
 ```sh
@@ -144,7 +144,7 @@ fit_covid_magnitudes
 
 * unnormalized_analysis
 <p>
-Auxillary script for running an unnormalized analysis based on the incidence per person (IPP), as detailed in the <i>Materials and Methods</i> and shown as figs. S16 and S17. The script contains the population of each locale (when available), calculates the IPP, and runs the downsteam analyses. Depending on whether you are working with countries and provinces or U.S. counties, set the <b>is_counties</b> flag to <b>0</b> or <b>1</b>. Then, run the script after the analysis by simply executing
+Auxillary script for running an unnormalized analysis based on the incidence per person (IPP), as detailed in the <i>Methods</i> and shown as Supplementary Figs. 16 and 17. The script contains the population of each locale (when available), calculates the IPP, and runs the downsteam analyses. Depending on whether you are working with countries and provinces or U.S. counties, set the <b>is_counties</b> flag to <b>0</b> or <b>1</b>. Then, run the script after the analysis by simply executing
 </p>
 
 ```sh
