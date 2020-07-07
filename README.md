@@ -37,7 +37,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Code
 
-The code in this repository allows for repeat and independent analysis of the one described in the paper "Inferring the effects of social distancing across the world during the COVID-19 pandemic", by Felix Wong, Meitong Li, and James J. Collins. The code requires MATLAB 2019b or later to run. 
+The code in this repository allows for repeat and independent analysis of the one described in the paper "Inferring the effects of social distancing across the world during the COVID-19 pandemic", by Felix Wong and Meitong Li. The code requires MATLAB 2019b or later to run. 
 
 <!-- GETTING STARTED -->
 ## Running the code
